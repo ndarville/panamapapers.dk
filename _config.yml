@@ -1,0 +1,17 @@
+highlighter: rouge
+gems: [jekyll-sitemap]
+
+include: [".htaccess"]
+exclude:
+    - ".*" # Automatic, but just in case
+    - "*.log"
+    - "*.md"
+    - "*.sh"
+    - "CNAME"
+    - "delpoy.sh"
+    - "Gemfile*"
+    - "s3_website.yml"
+    - "requirements.txt"
+    - "node_modules/"
+    - "tmp/"
+    - "venv/"

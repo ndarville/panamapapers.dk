@@ -1,0 +1,109 @@
+---
+url: https://panamapapers.dk
+title: Panama Papers i Danmark
+description: "Danske afsløringer fra #PanamaPapers."
+
+sites:
+    ssl:
+        - .icij.org
+        - .nl
+    no_ssl:
+        - .de
+        - .no
+        - .org
+        - .com
+
+docs:
+    sheet:
+        embed: https://docs.google.com/spreadsheets/d/1VmS4OMYhm8w8JFKO1ZByQRczM-DNm6lh9cDEPAgpRs8/pubhtml?widget=true&amp;headers=false
+        link: https://docs.google.com/spreadsheets/d/1VmS4OMYhm8w8JFKO1ZByQRczM-DNm6lh9cDEPAgpRs8/pub
+    form: https://docs.google.com/forms/d/1ykjG3EzPZHJyxGoCQxUg5S7Alg7bwWPAV04gsQFuE7Y/viewform
+wiki: https://da.wikipedia.org/wiki/Panama_Papers
+
+embed:
+    height: 400px
+    width: 730px
+---
+{% capture iframe %}<iframe
+    src="{{ page.docs.sheet.embed }}"
+    style="height: {{ page.embed.height }}; width: {{ page.embed.width }}">
+</iframe>{% endcapture %}
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ page.title }}</title>
+        <meta name="description" content="{{ page.description }}" />
+        <meta name="og:description" content="{{ page.description }}" />
+        <link rel="canonical" href="{{ page.url }}" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha384-wKclsw1inR27tF/KhTEhyufz5SmBKSkOaIEKhq9qu8QbqeaMhzuGtCQmrghNKXq0" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" />
+    </head>
+    <body>
+        <style>
+            @media screen and (max-width: 480px) {
+                #embed { display: none; }
+            }
+
+            code, pre { overflow: auto; }
+        </style>
+        <main role="main" class="container">
+            <!-- Sister sites with SSL -->
+            <div class="row" style="margin-top: 5%">
+                <nav class="six columns" role="navigation">
+                {% for s in page.sites.ssl %}
+                    <a class="button" href="https://panamapapers{{ s }}">{{ s }}</a>
+                {% endfor %}
+                </nav>
+            </div>
+            <!-- Sister sites without SSL -->
+            <div class="row">
+                <nav class="six columns" role="navigation">
+                    {% for s in page.sites.no_ssl %}
+                        <a class="button" href="http://panamapapers{{ s }}">{{ s }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+
+            <div class="row">
+                <header class="one-half columns" role="banner">
+                    <h1>{{ page.title }}</h1>
+                </header>
+            </div>
+
+            <div class="row">
+                <section class="six columns" role="region">
+                    <p>Denne side indeholder eventuelle afsløringer i dansk regi, der vedrører <a href="https://panamapapers.icij.org">#PanamaPapers</a>.</p>
+
+                    <p>I skrivende stund omfatter de <strong>Nordea</strong> og <strong>Jyske Bank</strong>.</p>
+
+                    <p>Afsløringerne er bragt af <i><a href="https://www.dr.dk/nyheder/tema/det-store-skattelaek">DR</a></i> og <i><a href="http://politiken.dk/oekonomi/fokus_oekonomi/panama_papers/">Politiken</a></i>.</p>
+                </section>
+            </div>
+
+            <div class="row" id="embed">
+                <section class="six columns" role="region">
+                    {{ iframe }}
+
+                    <p>Vis afsløringerne på din egen side ved at kopiere nedenstående:</p>
+
+                    {% highlight html %}{{ iframe }}{% endhighlight %}
+                </section>
+            </div>
+
+            <div class="row">
+                <nav class="six columns" role="navigation">
+                    <a class="button" href="{{ page.docs.sheet.link }}">Afsløringsoversigt</a>
+                    <a class="button" href="{{ page.docs.form }}">Indsendingsformular</a>
+                    <a class="button" href="{{ page.wiki }}">Wiki</a>
+                </nav>
+            </div>
+        </main>
+    </body>
+</html>
